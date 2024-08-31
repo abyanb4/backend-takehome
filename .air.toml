@@ -1,0 +1,19 @@
+[air]
+  watch_delay = 500 # in milliseconds
+  polling = true
+
+[build]
+  cmd = "go build -o main ./cmd/http/"
+  bin = "main"
+  include_dir = [".", "cmd", "internal"]  # Explicitly include the cmd directory
+  exclude_dir = ["vendor"]
+  exclude_file = []
+  rebuild = true
+
+[watch]
+  include_ext = ["go"]
+  exclude_ext = []
+
+[log]
+  time = true
+  colors = true

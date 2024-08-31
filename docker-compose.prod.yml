@@ -2,22 +2,15 @@ services:
   app:
     build:
       context: .
-      dockerfile: Dockerfile.dev
     environment:
-      GOMODCACHE: /go/src/app/.modcache
-      GOCACHE: /go/src/app/.cache
       TZ: UTC
     env_file:
-      - .env
-    # volumes:
-    #   - .:/app
-    #   - /app/tmp
+      - .env.prod
     ports:
       - "8080:8080"
     depends_on:
       db:
         condition: service_healthy
-    # command: air
 
   db:
     image: mysql:8.0
@@ -28,7 +21,7 @@ services:
       MYSQL_PASSWORD: "${DB_PASSWORD}"
       TZ: UTC
     env_file:
-      - .env
+      - .env.prod
     volumes:
       - db_data:/var/lib/mysql
     ports:

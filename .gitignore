@@ -3,3 +3,7 @@
 .cache
 .modcache
 tmp
+vendor/
+
+.DS_Store
+.app-data

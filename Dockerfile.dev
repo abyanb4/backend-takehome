@@ -1,6 +1,9 @@
-# Dockerfile
 FROM golang:1.21.0-alpine
 
+# # Install Air
+# RUN go install github.com/cosmtrek/air@v1.45.0
+
+# Set timezone
 ENV TZ=UTC
 
 # Install tzdata package to set timezone and curl for downloading
@@ -9,7 +12,7 @@ RUN apk update && apk add --no-cache tzdata curl tar
 # Configure the timezone
 RUN ln -sf /usr/share/zoneinfo/UTC /etc/localtime && echo "UTC" > /etc/timezone
 
-# install git for golang-migrate
+# Install required packages
 RUN apk add --no-cache git
 
 # Determine architecture and download appropriate golang-migrate
@@ -29,27 +32,35 @@ RUN ARCH=$(uname -m) && \
     curl -L https://github.com/golang-migrate/migrate/releases/download/v4.16.1/migrate.linux-${GOARCH}.tar.gz | tar xz -C /usr/local/bin/ && \
     chmod +x /usr/local/bin/migrate
 
+# Install golang-migrate for ARM architecture
+# RUN curl -L  | tar xz -C /usr/local/bin/ && \
+#     chmod +x /usr/local/bin/migrate
+
 WORKDIR /app
+
+# Copy go.mod and go.sum files first to cache dependencies
+# if you using arm you can use this and not re init module on line 50
+COPY go.mod ./
+COPY go.sum ./
+RUN go mod download
 
 # Copy the rest of the application source code
 COPY . .
 
-# remove and re-init package because then we can either use arm or x86
-RUN rm go.mod
-RUN rm go.sum
-RUN go mod init backend-takehome
-RUN go mod tidy
+# remove and re-init package because the we can either use arm or x86
+# RUN rm go.mod
+# RUN rm go.sum
+# RUN go mod init backend-takehome
+# RUN go mod tidy
 
 RUN chmod +x ./entrypoint.sh
 
-# Build the Go application
-RUN go build -o main ./cmd/http
-
-# Use a non-root user for security
-RUN adduser -D appuser
-USER appuser
+RUN go build -o main ./cmd/http/
 
 EXPOSE 8080
 
 ENTRYPOINT ["/app/entrypoint.sh"]
 
+
+# Default command to run Air
+# CMD ["air", "-c", ".air.tomlj"]
