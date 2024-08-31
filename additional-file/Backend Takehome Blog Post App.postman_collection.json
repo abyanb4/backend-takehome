@@ -1,0 +1,235 @@
+{
+	"info": {
+		"_postman_id": "e2e653dd-508b-4cc4-bb29-b949ba8a7b7d",
+		"name": "Backend Takehome Blog Post App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "10725934"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"tyrion\",\n    \"email\": \"lannister@mail.com\",\n    \"password\": \"testpassword\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/user/register"
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"tyrion\",\n    \"password\": \"testpassword\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/user/login"
+			},
+			"response": []
+		},
+		{
+			"name": "[Dummy] Check Token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiYzViYzcwMzMtOWIxNC00Mzc3LTgzNjUtNGRlMTFlZTM0MjNlIiwidXNlcm5hbWUiOiJhYnlhbiIsImV4cCI6MTcyNTAyMTI2Nn0.6wlvHpeeun-eqSyz9rBXfy08Go_MGfHWMvQuqcyEDjE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"abyan\",\n    \"password\": \"testpassword\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/user/token"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Post",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMDIyZjczZmQtN2U0ZS00MTJmLWExOTMtNDVlYTBiMTZmOTYyIiwidXNlcm5hbWUiOiJ0eXJpb24iLCJleHAiOjE3MjUwNzI2Mjl9.Or5R3n9Qd6Fw4kxT0yJq88sHUhspghCcvRJV5m7c7wo",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"test post\",\n    \"content\": \"test content\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/posts"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Post By ID",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMDIyZjczZmQtN2U0ZS00MTJmLWExOTMtNDVlYTBiMTZmOTYyIiwidXNlcm5hbWUiOiJ0eXJpb24iLCJleHAiOjE3MjUwNzI2Mjl9.Or5R3n9Qd6Fw4kxT0yJq88sHUhspghCcvRJV5m7c7wo",
+						"type": "text"
+					}
+				],
+				"url": "localhost:8080/posts/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Post",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMDIyZjczZmQtN2U0ZS00MTJmLWExOTMtNDVlYTBiMTZmOTYyIiwidXNlcm5hbWUiOiJ0eXJpb24iLCJleHAiOjE3MjUwNzI2Mjl9.Or5R3n9Qd6Fw4kxT0yJq88sHUhspghCcvRJV5m7c7wo",
+						"type": "text"
+					}
+				],
+				"url": "localhost:8080/posts"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Post By Author ID",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMDIyZjczZmQtN2U0ZS00MTJmLWExOTMtNDVlYTBiMTZmOTYyIiwidXNlcm5hbWUiOiJ0eXJpb24iLCJleHAiOjE3MjUwNzI2Mjl9.Or5R3n9Qd6Fw4kxT0yJq88sHUhspghCcvRJV5m7c7wo",
+						"type": "text"
+					}
+				],
+				"url": "localhost:8080/posts/author/022f73fd-7e4e-412f-a193-45ea0b16f962"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Post By ID",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMDIyZjczZmQtN2U0ZS00MTJmLWExOTMtNDVlYTBiMTZmOTYyIiwidXNlcm5hbWUiOiJ0eXJpb24iLCJleHAiOjE3MjUwNzI2Mjl9.Or5R3n9Qd6Fw4kxT0yJq88sHUhspghCcvRJV5m7c7wo",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"test update title\",\n    \"content\": \"test update content\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/posts/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Post By ID",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiYzViYzcwMzMtOWIxNC00Mzc3LTgzNjUtNGRlMTFlZTM0MjNlIiwidXNlcm5hbWUiOiJhYnlhbiIsImV4cCI6MTcyNTAzMTk4Nn0.wSPg6i-xQZAwTG5RM0DRR65EN7EiBi9Orc6QvnkUHz0",
+						"type": "text"
+					}
+				],
+				"url": "localhost:8080/posts/3"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Comment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMDIyZjczZmQtN2U0ZS00MTJmLWExOTMtNDVlYTBiMTZmOTYyIiwidXNlcm5hbWUiOiJ0eXJpb24iLCJleHAiOjE3MjUwNzI2Mjl9.Or5R3n9Qd6Fw4kxT0yJq88sHUhspghCcvRJV5m7c7wo",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"post_id\": 1,\n    \"content\": \"test comment 2\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/posts/1/comment"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Comment By Post ID",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMDIyZjczZmQtN2U0ZS00MTJmLWExOTMtNDVlYTBiMTZmOTYyIiwidXNlcm5hbWUiOiJ0eXJpb24iLCJleHAiOjE3MjUwNzI2Mjl9.Or5R3n9Qd6Fw4kxT0yJq88sHUhspghCcvRJV5m7c7wo",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/posts/1/comment",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"posts",
+						"1",
+						"comment"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

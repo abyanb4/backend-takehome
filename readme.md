@@ -2,7 +2,7 @@
 # How To Run
 1. `make run` for development and `make run-prod` for production. There is no big difference actually, I just separate it to be production-ready.
 2. Voila, the server run on port `8080`. The migration invoked before app run, at this point the table should be ready
-3. You can test the endpoint using test script that I provided on zip `backend-takehome-testscript`. Make sure you read the readme first because there is some manual step need to be done.
+3. You can test the endpoint using test script and postman collection that I provided on folder `additional-file`. Make sure you read the readme first because there is some manual step need to be done.
 <br>
 
 # Indexing
